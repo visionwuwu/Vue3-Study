@@ -1,0 +1,18 @@
+// 可以为空文件，但会有默认的编译选项得配置
+// tsc 指定的命令肯定是大于我们配置喽 在命令行上指定的编译选项会覆盖在tsconfig.json文件里的相应选项
+{
+  // 指定项目中哪些.ts、.tsx、.d.ts需要被typescript编译器去校验，去编译
+  
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.vitest.json"
+    }
+  ]
+}

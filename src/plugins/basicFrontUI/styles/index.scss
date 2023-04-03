@@ -1,0 +1,19 @@
+// 项目中公用全局sass变量
+@import './variables';
+
+// 重置默认样式
+@import './normalize';
+@import './reboot';
+
+// mixins
+@import './mixins/index';
+
+// 动画
+@import './animation';
+
+// 工具类
+@import './utilities';
+
+
+// 组件样式
+// @import '../BComponents/r-button/styles';

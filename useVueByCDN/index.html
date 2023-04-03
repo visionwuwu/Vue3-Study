@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <!-- Vue应用容器，被Vue监控 -->
+  <div id="app">
+    <!-- 当根组件没有设置 template 选项时，Vue 将自动使用容器的 innerHTML 作为模板。 -->
+  </div>
+  
+
+  <script type="module">
+    import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+    import App from './components/App.js'
+    // 根组件
+    const app = createApp(App)
+
+    // css选择器后实际Dom元素
+    const rootCompoentInstance = app.mount('#app')
+
+    console.log(rootCompoentInstance, 'rootCompoentInstance');
+  </script>
+</body>
+</html>
