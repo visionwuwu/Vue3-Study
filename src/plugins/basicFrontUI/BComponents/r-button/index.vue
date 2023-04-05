@@ -12,12 +12,10 @@
 //     validator: (size: string) => ['default', 'lg', 'sm'].includes(size)
 //   }
 // })
-import { onMounted, ref, toRefs, useCssVars } from 'vue';
-
 export interface RButtonProps {
   onClick?: () => void,
   size?: 'default' | 'sm' | 'lg',
-  btnType?: 'default' | 'sm' | 'lg' | 'link',
+  btnType?: 'primary' | 'default' | 'info' | 'warning' | 'danger' | 'success' | 'link',
   href?: string,
   disabled?: boolean
 }
@@ -25,16 +23,23 @@ export interface RButtonProps {
 const props = withDefaults(defineProps<RButtonProps>(), {
   onClick: () => {},
   size: 'default',
+  btnType: 'default',
   disabled: false 
 })
 
 const classes = {
   'r-button': true,
-  [`r-button-${props.size}`]: !!props.size
+  [`r-button-${props.size}`]: !!props.size,
+  [`r-button-${props.btnType}`]: !!props.btnType,
+  'is-disabled': props.disabled,
 }
 
 const handleClick = () => {
   props.onClick()
+}
+const RButtonAttrs = {
+  class: classes,
+  disabled: props.disabled
 }
 </script>
 <script lang="ts">
@@ -44,16 +49,19 @@ export default {
 </script>
 
 <template>
-  <div
-    :class="classes"
-    :disabled="props.disabled"
+  <button
+    v-if="props.btnType !== 'link'"
+    v-bind="RButtonAttrs"
     @click="handleClick"
   >
     <slot></slot>
-  </div>
+  </button>
+  <a v-else :href="props.href" :class="classes">
+    <slot></slot>
+  </a>
 </template>
 
 
 <style scoped lang="scss">
-@import './styles';
+// 1
 </style>
