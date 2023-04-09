@@ -1,12 +1,8 @@
 import './styles/index.scss'
 
-import {
-  RButton
-} from './BComponents'
+import { RButton } from './BComponents'
 
-export const BComponents = [
-  RButton
-]
+export const BComponents = [RButton]
 
 export default (app: any) => {
   BComponents.forEach((component) => {
