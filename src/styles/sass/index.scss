@@ -1,12 +1,11 @@
 // 项目中公用全局sass变量
-@import './_variables.scss';
-
-// 重置默认样式
-@import './_normalize.scss';
-@import './_reboot.scss';
+@import './_variables.module.scss';
 
 // mixins
 @import './mixins/index.scss';
+
+// 重置默认样式
+@import './_normalize.scss';
 
 // 动画
 @import './_animation.scss';
@@ -14,5 +13,8 @@
 // 工具类
 @import './_utilities.scss';
 
+// element-ui
+@import './element-ui.scss';
+@import './sidebar.scss';
 
 // 组件样式

@@ -7,6 +7,8 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+// import Icons from 'unplugin-icons/vite'
+// import IconsResolver from 'unplugin-icons/resolver'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -50,7 +52,14 @@ export default defineConfig({
           type: true
         },
       ],
-      resolvers: [ElementPlusResolver()],
+      resolvers: [
+        ElementPlusResolver(),
+        // Auto import icon components
+        // 自动导入图标组件
+        // IconsResolver({
+        //   prefix: 'Icon',
+        // }),
+      ],
       // 自动导入目录的路径
       dirs: [
         './src/hooks/**',
@@ -61,9 +70,9 @@ export default defineConfig({
        * 那么你想获取预设中的api类型提示的话这个unplugin-auto-import 插件会根据预设内容，生成对应的全局类型声明
        * 有了这些全局类型声明，我们就能够像全局变量那样使用 ref 等 Vue API，不需要先 import 对应的内容，TS 编译也不会报错。
        */
-      dts: true,
+      // dts: true,
       // 缓存多个vite构建之间的解析结果。
-      cache: true,
+      // cache: true,
       // 自动导入VueTemplate
       vueTemplate: true,
       /**
@@ -75,14 +84,35 @@ export default defineConfig({
         enabled: true
       }
     }),
+
     Components({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [
+        // 自动注册图标组件
+        // IconsResolver({
+        //   enabledCollections: ['ep'],
+        // }),
+        ElementPlusResolver(),
+      ],
       directoryAsNamespace: true
     }),
+
+    // Icons({
+    //   autoInstall: true,
+    // }),
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      'layouts': fileURLToPath(new URL('./src/layouts', import.meta.url)),
+      'views': fileURLToPath(new URL('./src/views', import.meta.url)),
+      'apis': fileURLToPath(new URL('./src/apis', import.meta.url)),
+      'components': fileURLToPath(new URL('./src/components', import.meta.url)),
+      'directives': fileURLToPath(new URL('./src/directives', import.meta.url)),
+      'hooks': fileURLToPath(new URL('./src/hooks', import.meta.url)),
+      'router': fileURLToPath(new URL('./src/router', import.meta.url)),
+      'stores': fileURLToPath(new URL('./src/stores', import.meta.url)),
+      'styles': fileURLToPath(new URL('./src/styles', import.meta.url)),
+      'utils': fileURLToPath(new URL('./src/utils', import.meta.url))
     }
   }
 })

@@ -13,10 +13,10 @@
 //   }
 // })
 export interface RButtonProps {
-  onClick?: () => void,
-  size?: 'default' | 'sm' | 'lg',
-  btnType?: 'primary' | 'default' | 'info' | 'warning' | 'danger' | 'success' | 'link',
-  href?: string,
+  onClick?: () => void
+  size?: 'default' | 'sm' | 'lg'
+  btnType?: 'primary' | 'default' | 'info' | 'warning' | 'danger' | 'success' | 'link'
+  href?: string
   disabled?: boolean
 }
 
@@ -24,14 +24,14 @@ const props = withDefaults(defineProps<RButtonProps>(), {
   onClick: () => {},
   size: 'default',
   btnType: 'default',
-  disabled: false 
+  disabled: false
 })
 
 const classes = {
   'r-button': true,
   [`r-button-${props.size}`]: !!props.size,
   [`r-button-${props.btnType}`]: !!props.btnType,
-  'is-disabled': props.disabled,
+  'is-disabled': props.disabled
 }
 
 const handleClick = () => {
@@ -49,19 +49,10 @@ export default {
 </script>
 
 <template>
-  <button
-    v-if="props.btnType !== 'link'"
-    v-bind="RButtonAttrs"
-    @click="handleClick"
-  >
+  <button v-if="props.btnType !== 'link'" v-bind="RButtonAttrs" @click="handleClick">
     <slot></slot>
   </button>
   <a v-else :href="props.href" :class="classes">
     <slot></slot>
   </a>
 </template>
-
-
-<style scoped lang="scss">
-// 1
-</style>

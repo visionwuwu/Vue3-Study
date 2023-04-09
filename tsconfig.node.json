@@ -2,8 +2,6 @@
   "extends": "@vue/tsconfig/tsconfig.node.json",
   "include": ["vite.config.*", "vitest.config.*", "cypress.config.*", "playwright.config.*"],
   "compilerOptions": {
-    "composite": true,
-    // 编译后会将node里面的@type类型包引入进来
-    "types": ["node"]
+    "composite": true
   }
 }
