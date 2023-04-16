@@ -1,6 +1,7 @@
 import type { AppRouteRecordRaw } from '../../../types'
-import TemplateSyntax from './templateSyntax'
 import CreateVueApp from './createVueApp'
+import TemplateSyntax from './templateSyntax'
+import ReactiveBase from './reactiveBase'
 import CssModule from './cssModule'
 import CssScoped from './cssScoped'
 
@@ -12,7 +13,13 @@ const BasicRoutes: Array<AppRouteRecordRaw> = [
       title: 'Vue3基础',
       icon: 'Menu'
     },
-    children: [...CreateVueApp, ...TemplateSyntax, ...CssModule, ...CssScoped]
+    children: [
+      ...CreateVueApp,
+      ...TemplateSyntax,
+      ...ReactiveBase,
+      ...CssModule,
+      ...CssScoped
+    ]
   }
 ]
 
