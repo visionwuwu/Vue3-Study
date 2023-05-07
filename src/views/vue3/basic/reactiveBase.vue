@@ -10,19 +10,18 @@
       <p>{{ flag }}</p>
       <p>{{ symbol }}</p>
       <p>{{ bigint }}</p>
-      <p>{{ obj  }}</p>
+      <p>{{ obj }}</p>
     </section>
-    <hr>
+    <hr />
 
-    
     <!-- 使用reactive创建响应式状态和改变其响应式状态 -->
     <h3>使用reactive创建响应式状态和改变其响应式状态</h3>
     <div>
-      {{ state.title }} -- <b>{{ state.count  }}</b>
+      {{ state.title }} -- <b>{{ state.count }}</b>
       <el-button @click="handleCount('increment', 1)">Increment</el-button>
       <el-button @click="handleCount('decrement', 1)">Decrement</el-button>
     </div>
-    <hr>
+    <hr />
 
     <!-- 深层响应式也就是对象嵌套对象的响应式 -->
     <section>
@@ -41,9 +40,7 @@
     </section>
 
     <section>
-      <h3>
-        浅层响应式对象，由shallowReactive创建的
-      </h3>
+      <h3>浅层响应式对象，由shallowReactive创建的</h3>
       <div>
         <pre :style="{ fontWeight: 'bold' }">
           const shallowState = shallowReactive({
@@ -62,8 +59,8 @@
     <section>
       <h3>reactive返回的是一个代理对象和原始对象是不相等，并且改变原始对象，也不会触发响应式</h3>
       <div>
-        <p>proxy：{{  proxy.count }}</p>
-        <p>raw: {{  raw.count }}</p>
+        <p>proxy：{{ proxy.count }}</p>
+        <p>raw: {{ raw.count }}</p>
       </div>
     </section>
 
@@ -95,7 +92,7 @@ const state = reactive<IStateProps>({
 })
 
 const handleCount = (type: CountType, number: number) => {
-  state.count = type === 'increment' ? state.count + number : state.count - number 
+  state.count = type === 'increment' ? state.count + number : state.count - number
 }
 
 const deepState = reactive({
@@ -129,7 +126,7 @@ console.log(proxy === raw) // false
 console.log('同一个对象进行reactive返回相同代理', reactive(raw) === proxy)
 
 // 在一个已代理对象再次代理会返回它自己
-console.log('在一个已代理对象再次代理会返回它自己', reactive(proxy) === proxy);
+console.log('在一个已代理对象再次代理会返回它自己', reactive(proxy) === proxy)
 
 // proxy.count = 1
 
@@ -139,10 +136,6 @@ console.log('在一个已代理对象再次代理会返回它自己', reactive(p
 //   // 响应式状态改变会影响raw 触发响应式
 //   proxy.count = 33
 // }, 1000)
-
-
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

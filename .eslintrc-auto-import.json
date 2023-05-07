@@ -61,6 +61,7 @@
     "useLink": true,
     "useMouse": true,
     "useMyFetch": true,
+    "useResize": true,
     "useRoute": true,
     "useRouter": true,
     "useSlots": true,

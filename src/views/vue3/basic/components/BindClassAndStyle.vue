@@ -1,14 +1,11 @@
 <template>
-  <div>
-    <h1>HtmlPage</h1>
+  <div class="bind-class-style">
+    bind-class-style
+    {{ $attrs }}
   </div>
+  <div></div>
 </template>
 
 <script setup lang="ts"></script>
-<script>
-export default {
-  name: 'HtmlPage'
-}
-</script>
 
 <style scoped></style>

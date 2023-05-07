@@ -4,15 +4,11 @@
   </div>
 </template>
 
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 <script>
 export default {
   name: 'CssPage'
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

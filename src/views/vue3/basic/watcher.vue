@@ -1,13 +1,11 @@
 <template>
-  <div>
-    <h1>HtmlPage</h1>
-  </div>
+  <div></div>
 </template>
 
 <script setup lang="ts"></script>
 <script>
 export default {
-  name: 'HtmlPage'
+  name: 'WatcherCom'
 }
 </script>
 

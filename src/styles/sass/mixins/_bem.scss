@@ -1,0 +1,85 @@
+// bem 块级元素修饰符 b --> block e --> element
+// bem 架构 .el-button .el-button--primary el-button__wrapper
+$namespace: 'vision' !default;
+$block-sel: '-' !default;
+$element-sel: '__' !default;
+$modify-sel: '--' !default;
+
+/**
+* sass语法
+* `!default` 变量定义：给一个没用!default;定义变量的变量赋值，如果变量没赋值，会被赋值，赋值则不会赋值
+* $a: null; $a: 1; .classA { line-height: $a; } ---> 编译后: .classA { line-height: 1; }
+* `$` 用来定义变量如：$color-red: red;
+* `#{1}` 插值语法 用在css选择器和css属性值中
+* .a#{1} {} .a { color: #{1} }
+* `&` 父级选择器，在css嵌套规则的时候会去使用这个&来代表父级css选择器
+* `@mixin` 指令 混入语法 功能：可以将css代码与别的css代码混入，还可以混入到别的mixin中
+*  1. 定义混入不加参数 @mixin bfc { 写一些css }
+*  2. 定义混入带参数 @mixin bfc(参数) { 写一些css }
+* `@include`指令 引入混合样式
+*  1. 使用定义的不带参数混入语法 @include 混入名
+*  2. 使用定义带参数混入语法 @include 混入名(参数)
+* `@content`指令 向混合样式中导入内容 类似于Vue的插槽，可以往混入分发内容
+*  将@content放入mixin中，代表一段内容混入到mixin中
+*  @mixin bfc { @content; }
+*  p { @include bfc { color: red; } }
+*  编译后输出 p { color: red }
+* `@at-root` 跳出scss嵌套 比如: 
+* 1. 跳出所有嵌套 @at-root {}
+* 2. 跳出指定层级的嵌套 @at-root (without: media) {}
+*/
+
+/**
+* 块级类构造器
+* .vision-button
+*/
+@mixin block($name) {
+  $blockName: $namespace + $block-sel + $name;
+  // 插值语法
+  .#{$blockName} {
+    @content;
+  }
+}
+
+/**
+* 块级元素类构造器
+* bem架构里的块级容器里的元素
+* .vision-button__wrapper
+*/
+@mixin element($name) {
+  $selector: &;
+  $elementName: $selector + $element-sel + $name;
+  @at-root {
+    #{$elementName} {
+      @content;
+    }
+  }
+}
+
+/*
+* 修饰符构造器
+* bem架构模式的修饰符，用来修饰，block和element
+* .vision-button--primary
+* .vision-button__wrapper--left
+*/
+@mixin modifier($name) {
+  $selector: &;
+  $modifyName: $selector + $modify-sel + $name;
+  @at-root {
+    #{$modifyName} {
+      @content;
+    }
+  }
+}
+
+@include block(button) {
+  padding: 5px 8px;
+
+  @include element(wrapper) {
+    color: red;
+    font-size: 14px;
+    @include modifier(left) {
+      float: left;
+    }
+  }
+}

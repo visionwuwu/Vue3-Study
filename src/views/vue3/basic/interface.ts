@@ -1,5 +1,5 @@
 export interface IStateProps {
-  title: string,
+  title: string
   count: number
 }
 
