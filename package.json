@@ -59,7 +59,7 @@
       "npm run lint",
       "git add"
     ],
-    "*.{md,htm,html,css,less,scss,sass,styl}": [
+    "*.{vue,md,htm,html,css,less,scss,sass,styl}": [
       "npm run format",
       "git add"
     ]
